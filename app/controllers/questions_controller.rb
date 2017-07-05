@@ -8,10 +8,12 @@ class QuestionsController < ApplicationController
   end
 
   def new
+    # @user = User.find(params[current_user.id])
     @question = Question.new
   end
 
   def create
+    # @user = User.find(params[current_user.id])
     @question = Question.new(question_params)
     if @question.save
     flash[:notice] = "Question successfully added!"
@@ -46,6 +48,6 @@ class QuestionsController < ApplicationController
 private
   def question_params
     # Use strict parameters, replace placeholder info below with your class' actual attributes
-    params.require(:question).permit(:content)
+    params.require(:question).permit(:content, :user_id)
   end
 end
