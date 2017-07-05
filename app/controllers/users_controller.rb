@@ -1,8 +1,4 @@
 class UsersController < ApplicationController
-  def index
-    @users = User.all
-  end
-
   def show
     @user = User.find(params[:id])
   end
@@ -14,26 +10,28 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-    flash[:notice] = "User successfully added!"
-      redirect_to  users_path
+    flash[:notice] = "Successful account creation!"
+    session[:user_id] = @user.id
+      redirect_to  "/"
     else
-      render :new
+      flash[:alert] = "Account creation failed!"
+      render '/signup'
     end
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
+  # def edit
+  #   @user = User.find(params[:id])
+  # end
 
-  def update
-    @user= User.find(params[:id])
-    if @user.update(user_params)
-      flash[:notice] = "User successfully updated!"
-      redirect_to users_path
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   @user= User.find(params[:id])
+  #   if @user.update(user_params)
+  #     flash[:notice] = "User successfully updated!"
+  #     redirect_to users_path
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   def destroy
     @user = User.find(params[:id])
@@ -46,6 +44,6 @@ class UsersController < ApplicationController
 private
   def user_params
     # Use strict parameters, replace placeholder info below with your class' actual attributes
-    params.require(:user).permit(:username, :email)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 end
