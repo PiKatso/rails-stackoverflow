@@ -4,4 +4,12 @@ FactoryGirl.define do
     email('bob@gmail.com')
     password('password')
   end
+
+  # factory(:question) do
+  #   content('why is the sky blue?')
+  # end
+  #
+  # factory(:response) do
+  #   content('people are dumb')
+  # end
 end

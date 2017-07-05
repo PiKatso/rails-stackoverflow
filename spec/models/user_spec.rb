@@ -8,7 +8,7 @@ describe User do
   it { should have_many :questions }
 
   it 'it is there' do
-    user = FactoryGirl.create(:user)
-    user.username.should eq 'bob'
+    user = FactoryGirl.build(:user, username: 'jonah')
+    user.username.should eq 'jonah'
   end
 end
