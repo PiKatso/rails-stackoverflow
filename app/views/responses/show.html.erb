@@ -1,0 +1,7 @@
+<h1>Show Response</h1>
+
+<p><%= link_to "Edit", edit_response_path(@response) %></p>
+<p><%= link_to "Delete", response_path(@response),
+                         :data => {:confirm => "You sure?",
+                                   :method => "delete"} %></p>
+<p><%= link_to "Return to responses", responses_path %></p>

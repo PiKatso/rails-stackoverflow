@@ -1,0 +1,11 @@
+<h1>Responses</h1>
+
+<ul>
+  <% @responses.each do |response| %>
+    <li><%= link_to "Show", response_path(response) %></li>
+  <% end %>
+</ul>
+
+<hr>
+
+<%= link_to "New Response", new_response_path %>
