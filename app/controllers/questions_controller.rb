@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_action :authorize, only: [:new, :edit, :destroy]
+
   def index
     @questions = Question.all
   end
@@ -8,12 +10,10 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    # @user = User.find(params[current_user.id])
-    @question = Question.new
+   @question = Question.new
   end
 
   def create
-    # @user = User.find(params[current_user.id])
     @question = Question.new(question_params)
     if @question.save
     flash[:notice] = "Question successfully added!"

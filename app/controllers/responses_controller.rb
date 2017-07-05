@@ -1,4 +1,6 @@
 class ResponsesController < ApplicationController
+  before_action :authorize, only: [:new, :edit, :destroy]
+
   def index
     @responses = Response.all
   end
